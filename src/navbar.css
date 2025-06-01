@@ -1,0 +1,72 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+.nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #1a1a1a; /* dark background */
+  padding: 12px 24px;
+  color: white;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.5);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.left {
+  font-size: 1.25rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+}
+
+.right ul {
+  list-style: none;
+  display: flex;
+  gap: 24px;
+  margin: 0;
+  padding: 0;
+  align-items: center;
+}
+
+.right ul li a {
+  color: white;
+  text-decoration: none;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  transition: color 0.3s ease;
+}
+
+.right ul li a svg {
+  fill: currentColor;
+  display: block;
+}
+
+.right ul li a:hover {
+  color: #ff4081; /* pink for Instagram hover */
+}
+
+/* LinkedIn icon hover */
+.right ul li:nth-child(2) a:hover {
+  color: #0a66c2; /* LinkedIn blue */
+}
+
+/* GitHub link hover */
+.right ul li:nth-child(3) a:hover {
+  color: #888; /* subtle grey */
+}
+
+/* Responsive example: stack nav on small screens */
+@media (max-width: 600px) {
+  .nav {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .right ul {
+    gap: 16px;
+    margin-top: 12px;
+  }
+}
