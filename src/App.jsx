@@ -9,7 +9,7 @@ function App() {
       <Navbar />
       <div className="body">
         <div className="left-section">
-          <img src="/public/Chirag.jpg" alt="Chirag S" className="profile-pic" />
+          <img src="/Portfolioo/Chirag.jpg" alt="Chirag S" className="profile-pic" />
           <h2 className="name">Chirag S</h2>
           <h3 className="title">CS & Business System Engineer</h3>
           <div className="res-btn">
