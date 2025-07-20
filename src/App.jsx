@@ -68,6 +68,12 @@ function App() {
           <section id="projects">
             <h2 className='section-title'>Projects</h2>
             <div className="projects-grid">
+              <div class="project-card">
+                <h3>Password Manager</h3>
+                <p>A secure full-stack app to store and manage passwords. Users can add, view, and delete credentials with encryption.</p>
+                <p><strong>Tech Stack:</strong> React, Node.js, Express, MongoDB</p>
+                <a href="https://password-manager-frontend-coral.vercel.app" target="_blank">Live Demo</a>
+              </div>
               <div className="project-card">
                 <h3>Mood Matrix</h3>
                 <p>A mood-tracking web app that lets users log emotions daily with graphs & reflections. Built using React and localStorage.</p>
