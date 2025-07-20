@@ -213,7 +213,93 @@ html,
   color: #4b5563;
   line-height: 1.6;
 }
-.list a.active{
+
+.list a.active {
   color: #ffcc00;
   font-weight: bold;
+}
+
+/* RESPONSIVE STYLES */
+@media (max-width: 768px) {
+  .body {
+    flex-direction: column;
+    height: auto;
+  }
+
+  .left-section {
+    width: 100%;
+    height: auto;
+    position: relative;
+    border-right: none;
+    border-bottom: 1px solid #e0e0e0;
+    padding: 20px;
+    align-items: center;
+    text-align: center;
+  }
+
+  .res-btn {
+    justify-content: center;
+  }
+
+  .list {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    flex-wrap: wrap;
+  }
+
+  .rightpart {
+    padding: 20px;
+  }
+
+  .section-title {
+    font-size: 1.5rem;
+    text-align: center;
+  }
+
+  .skills {
+    justify-content: center;
+  }
+
+  .project-card {
+    padding: 16px;
+  }
+
+  .contact {
+    margin-top: 15px;
+    font-size: 0.9rem;
+  }
+
+  .btn {
+    font-size: 0.9rem;
+    padding: 8px 12px;
+  }
+
+  .profile-pic {
+    width: 150px;
+    height: 150px;
+  }
+}
+
+@media (max-width: 480px) {
+  .section-title {
+    font-size: 1.25rem;
+  }
+
+  .btn {
+    width: 100%;
+    text-align: center;
+  }
+
+  .projects-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .rightpart section {
+    padding: 20px;
+  }
+
+  .about p {
+    font-size: 1rem;
+  }
 }
