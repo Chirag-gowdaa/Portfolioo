@@ -68,7 +68,7 @@ function App() {
           <section id="projects">
             <h2 className='section-title'>Projects</h2>
             <div className="projects-grid">
-              <div class="project-card">
+              <div className="project-card">
                 <h3>Password Manager</h3>
                 <p>A secure full-stack app to store and manage passwords. Users can add, view, and delete credentials with encryption.</p>
                 <p><strong>Tech Stack:</strong> React, Node.js, Express, MongoDB</p>
