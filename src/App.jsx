@@ -9,14 +9,14 @@ function App() {
       <Navbar />
       <div className="body">
         <div className="left-section">
-          <img src="/Chirag.jpg" alt="Chirag S" className="profile-pic" />
+          <img src="./Chirag.jpg" alt="Chirag S" className="profile-pic" />
           <h2 className="name">Chirag S</h2>
           <h3 className="title">CS & Business System Engineer</h3>
           <div className="res-btn">
-            <a href="/resume.pdf" target="_blank" rel="noopener noreferrer" className="btn view">
+            <a href="./resume.pdf" target="_blank" rel="noopener noreferrer" className="btn view">
               View Resume
             </a>
-            <a href="/resume.pdf" download className="btn download">
+            <a href="./resume.pdf" download className="btn download">
               Download Resume
             </a>
           </div>
@@ -103,3 +103,5 @@ function App() {
 }
 
 export default App;
+
+
