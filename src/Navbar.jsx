@@ -1,38 +1,98 @@
-import React from 'react'
-import "./navbar.css"
-const Navbar = () => {
-    return (
-        <>
-            <div className="nav">
-                <div className="left">Hello, Welcome</div>
-                <div className="right"><ul>
-                    <li><a href="https://www.instagram.com/chira.g._?igsh=MWhtdTl0ZWIzc2xkNg==">
-                        <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            width="24"
-                            height="24"
-                            viewBox="0 0 24 24"
-                            fill="currentColor"
-                        >
-                            <path d="M7.75 2A5.75 5.75 0 002 7.75v8.5A5.75 5.75 0 007.75 22h8.5A5.75 5.75 0 0022 16.25v-8.5A5.75 5.75 0 0016.25 2h-8.5zm0 1.5h8.5A4.25 4.25 0 0120.5 7.75v8.5A4.25 4.25 0 0116.25 20.5h-8.5A4.25 4.25 0 013.5 16.25v-8.5A4.25 4.25 0 017.75 3.5zm8.75 2a.75.75 0 100 1.5.75.75 0 000-1.5zM12 7a5 5 0 100 10 5 5 0 000-10zm0 1.5a3.5 3.5 0 110 7 3.5 3.5 0 010-7z" />
-                        </svg></a></li>
-                    <li><a href="https://www.linkedin.com/in/chirag-gowda-b10570351?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app"><svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        width="24"
-                        height="24"
-                        viewBox="0 0 24 24"
-                        fill="currentColor"
-                    >
-                        <path d="M4.98 3.5C4.98 4.88 3.87 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1s2.48 1.12 2.48 2.5zM.12 8.5h4.77v15H.12v-15zM8.22 8.5h4.58v2.04h.06c.64-1.21 2.22-2.48 4.56-2.48 4.88 0 5.78 3.21 5.78 7.37v8.08h-4.77v-7.15c0-1.71-.03-3.91-2.38-3.91-2.38 0-2.74 1.86-2.74 3.79v7.27h-4.77v-15z" />
-                    </svg></a></li>
-                    <li><a href="https://github.com/Chirag-gowdaa">Github</a></li>
-                    <li></li>
-                    <li></li>
-                    </ul>
-                </div>
-            </div>
-        </>
-    )
-}
+import { useState, useEffect } from "react";
+import { motion } from "framer-motion";
 
-export default Navbar
+export default function Navbar({ activeSection }) {
+    const [isOpen, setIsOpen] = useState(false);
+    const [isScrolled, setIsScrolled] = useState(false);
+
+    useEffect(() => {
+        const handleScroll = () => setIsScrolled(window.scrollY > 50);
+        window.addEventListener("scroll", handleScroll);
+        return () => window.removeEventListener("scroll", handleScroll);
+    }, []);
+
+    const navItems = [
+        { id: "home", label: "Home" },
+        { id: "about", label: "About" },
+        { id: "skills", label: "Skills" },
+        { id: "projects", label: "Projects" },
+        { id: "experience", label: "Experience" },
+        { id: "contact", label: "Contact" },
+    ];
+
+    const scrollToSection = (id) => {
+        document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
+        setIsOpen(false);
+    };
+
+    return (
+        <motion.nav
+            initial={{ y: -80 }}
+            animate={{ y: 0 }}
+            transition={{ duration: 0.6 }}
+            className={`fixed top-0 left-0 w-full z-50 transition-all ${isScrolled
+                    ? "backdrop-blur-md bg-gradient-to-r from-blue-500/80 via-purple-500/70 to-pink-500/80 shadow-lg"
+                    : "bg-transparent"
+                }`}
+        >
+            <div className="max-w-7xl mx-auto flex justify-between items-center px-6 md:px-12 py-4">
+                {/* Logo */}
+                <div
+                    onClick={() => scrollToSection("home")}
+                    className="text-2xl font-extrabold cursor-pointer bg-gradient-to-r from-pink-500 via-purple-500 to-blue-500 bg-clip-text text-transparent"
+                >
+                    Chirag.dev
+                </div>
+
+                {/* Desktop Nav */}
+                <ul className="hidden md:flex space-x-8 font-medium text-white drop-shadow-md">
+                    {navItems.map((item) => (
+                        <li
+                            key={item.id}
+                            onClick={() => scrollToSection(item.id)}
+                            className={`cursor-pointer relative group ${activeSection === item.id ? "font-semibold" : ""
+                                }`}
+                        >
+                            {item.label}
+                            <span className="absolute left-0 -bottom-1 w-0 h-[2px] bg-white transition-all group-hover:w-full"></span>
+                        </li>
+                    ))}
+                </ul>
+
+                {/* Mobile Menu Button */}
+                <button
+                    className="md:hidden flex flex-col gap-1"
+                    onClick={() => setIsOpen(!isOpen)}
+                >
+                    <span className="w-6 h-0.5 bg-white"></span>
+                    <span className="w-6 h-0.5 bg-white"></span>
+                    <span className="w-6 h-0.5 bg-white"></span>
+                </button>
+            </div>
+
+            {/* Mobile Dropdown */}
+            {isOpen && (
+                <motion.div
+                    initial={{ opacity: 0, y: -10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.3 }}
+                    className="md:hidden bg-gradient-to-b from-blue-500/90 via-purple-500/90 to-pink-500/90 backdrop-blur-md shadow-lg"
+                >
+                    <ul className="flex flex-col items-center py-4 space-y-4 font-medium text-white">
+                        {navItems.map((item) => (
+                            <li
+                                key={item.id}
+                                onClick={() => scrollToSection(item.id)}
+                                className={`cursor-pointer ${activeSection === item.id ? "font-semibold underline" : ""
+                                    }`}
+                            >
+                                {item.label}
+                            </li>
+                        ))}
+                    </ul>
+                </motion.div>
+            )}
+        </motion.nav>
+    );
+
+}
