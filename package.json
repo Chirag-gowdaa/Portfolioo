@@ -11,6 +11,9 @@
     "predeploy": "npm run build",
     "deploy": "gh-pages -d dist"
   },
+  "engines": {
+    "node": "22.x"
+  },
   "dependencies": {
     "@tailwindcss/vite": "^4.1.12",
     "express": "^5.1.0",
