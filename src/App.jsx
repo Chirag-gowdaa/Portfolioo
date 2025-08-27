@@ -43,6 +43,13 @@ function App() {
       link: "https://creator-space-puce.vercel.app/",
     },
     {
+      title: "MovieKnight",
+      desc: "Personalised movie search engine and recommendation system.",
+      tech: "Next.js, Tailwind, Omdb APIs, Next rotuing",
+      img: "./movie.png",
+      link: "https://movie-knight-eta.vercel.app/",
+    },
+    {
       title: "Password Manager",
       desc: "Secure password storage with encryption.",
       tech: "React, Node.js, MongoDB",
